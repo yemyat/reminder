@@ -1,0 +1,47 @@
+<h1>Create new contact</h1>
+<% if flash[:notice] %>
+<div id="notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<%= form_tag :action=>'create' %>
+<table>
+  <tr>
+    <td>Group:</td>
+    <td><%= select("contactform", "group_id", @currentUser.groups.all.collect { |g| [g.title,g.id]},{:include_blank => 'None'})%></td>
+  </tr>
+  <tr>
+    <td>First Name:</td>
+    <td><%= text_field("contactform", "firstName",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><%= text_field("contactform", "lastName",:size=>"20" )%></td>
+  </tr>
+
+  <tr>
+    <td>Gender:</td>
+    <td><%= select("contactform", "gender", {"Male" => "0", "Female" => "1"}, :selected => params[:gender])%></td>
+  </tr>
+  <tr>
+    <td>Date Of Birth:</td>
+    <td><%= text_field("contactform", "dateOfBirth",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Mobile Phone:</td>
+    <td><%= text_field("contactform", "mobilePhone",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Email:</td>
+    <td><%= text_field("contactform", "email",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Note:</td>
+    <td><%= text_area("contactform", "note",:size=>"30x5" )%></td>
+  </tr>
+
+  <tr><td colspan="2" align="right"><%= submit_tag 'Add' %><%= submit_tag 'Reset', :type => 'reset'%> </td></tr>
+
+</table>
+

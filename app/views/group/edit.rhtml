@@ -1,0 +1,13 @@
+<%= form_tag :action=>'edit' %>
+<table>
+  <tr>
+    <td>Title: </td>
+    <td><%= text_field("group", "title",:size=>"45" ,:value=>@group.title) %></td>
+  </tr>
+  <tr>
+    <td>Description:</td>
+    <td><%= text_field("group", "description",:size=>"45" ,:value=>@group.description)%></td>
+    <td><%= hidden_field_tag 'id', @group.id%></td>
+  </tr>
+  <tr><td colspan="2" align="right"><%= submit_tag 'Edit Group' %></td></tr>
+</table>

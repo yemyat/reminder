@@ -1,0 +1,28 @@
+<h1>Show Reminders</h1>
+
+<table border ="1" width ="80%">
+  <tr>
+    <td>Reminder Title</td>
+    <td>Reminder Message</td>
+    <td>Recipient(s)</td>
+    <td>Notification Date</td>
+    <td>Options</td>
+  </tr>
+  <% @currentReminder.each do |r| %>
+  <tr>
+    <td>
+      <%= r.reminderTitle %>
+    </td>
+    <td>
+      <%= r.reminderMessage %>
+    </td>
+    <td>
+      <%= link_to 'View Recipient List', '/reminder/showTaggedContacts/'+r.id.to_s %>
+    </td>
+    <td>
+      <%= r.reminderDate %>
+    </td>
+    <td><%= link_to 'Edit', '/reminder/edit/'+r.id.to_s %> | <%= link_to 'Delete', '/reminder/delete/'+r.id.to_s %></td>
+  </tr>
+  <% end %>
+</table>

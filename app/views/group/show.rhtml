@@ -1,0 +1,23 @@
+<table border ="1" width ="80%">
+  <tr>
+    <td>Group Title</td>
+    <td>Group Description</td>
+    <td>Group Members</td>
+    <td>Reminder Tagged</td>
+    <td>Options</td>
+    <td
+  </tr>
+  <%  @currentGroup.each do |p| %>
+    <tr>
+      <td><%=p.title %></td>
+      <td><%=p.description %></td>
+      <td><%@myMembers = @currentUser.contacts.find(:all, :conditions=> {:group_id => p.id})%>
+          <%  @myMembers.each do |a| %>
+          <%= a.firstName + ' ' + a.lastName %> ,
+          <% end %>
+      </td>
+      <td><%=p.tagStatus%></td>
+      <td><%= link_to 'Edit', '/group/edit/'+p.id.to_s %> | <%= link_to 'Delete', '/group/delete/'+p.id.to_s %></td>
+    </tr>
+<% end %>
+</table>

@@ -1,0 +1,42 @@
+
+<div id="panel"></div>
+
+<h1>Create new reminder</h1>
+<% if flash[:notice] %>
+<div id="notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<%= form_tag :action=>'create' %>
+<table>
+  <tr>
+    <td>Reminder Title:</td>
+    <td><%= text_field("reminderform", "reminderTitle",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Category:</td>
+    <td><%= text_field("reminderform", "reminderTitle",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Recipient (Contacts):</td>
+    <td><%= select('crecipient','crecipient',@currentUser.contacts.all.collect {|c| [c.firstName + c.lastName, c.id]},{:include_blank => 'None'},:multiple=>true) %></td>
+  </tr>
+  <tr>
+    <td>Recipient (Groups):</td>
+    <td><%= select('grecipient','grecipient',@currentUser.groups.all.collect {|g| [g.title, g.id]},{:include_blank => 'None'}, :multiple=>true) %></td>
+  </tr>
+  <tr>
+    <td>Reminder Date:</td>
+    <td><%= text_field("reminderform", "reminderDate",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Reminder Message:</td>
+    <td><%= text_area("reminderform", "reminderMessage",:size=>"30x5" )%></td>
+  </tr>
+
+  <%= form_tag :action => 'add_recipient' %>
+  
+  <tr><td colspan="2" align="right"><%= submit_tag 'Add' %><%= submit_tag 'Reset', :type => 'reset'%></td></tr>
+</table>
+

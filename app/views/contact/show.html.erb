@@ -1,0 +1,50 @@
+<h1>Show Contacts</h1>
+<table border ="1" width ="80%">
+  <tr>
+    <td>Group ID</td>
+    <td>First Name</td>
+    <td>Last Name</td>
+    <td>Gender</td>
+    <td>Date Of Birth</td>
+    <td>Mobile Phone</td>
+    <td>Email</td>
+    <td>Note</td>
+    <td>Options</td>
+  </tr>
+<% @currentContact.each do |c| %>
+
+  <tr>
+    <td>
+      <%= c.group_id %>
+    </td>
+    <td>
+      <%= c.firstName %>
+    </td>
+    <td>
+      <%= c.lastName %>
+    </td>
+    <td>
+      <% if c.gender == false %>
+      Male
+      <% else %>
+      Female
+      <%end%>
+    </td>
+    <td>
+      <%= c.dateOfBirth %>
+    </td>
+    <td>
+      <%= c.mobilePhone %>
+    </td>
+    <td>
+      <%= c.email %>
+    </td>
+    <td>
+      <%= c.note %>
+    </td>
+    <td>
+      <%= link_to 'Edit', '/contact/edit/'+c.id.to_s %> | <%= link_to 'Delete', '/contact/delete/'+c.id.to_s %>
+    </td>
+  </tr>
+  <% end %>
+</table>

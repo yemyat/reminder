@@ -1,0 +1,19 @@
+<div id ="loginForm">
+  <p id ="response">
+  </p>
+  <%= form_remote_tag :update => 'response',
+                      :url => {:action=>'authenticate'},
+                      :before => "$('response').update('Loading..')"%>
+
+  <table>
+    <tr>
+      <td>Email: </td>
+      <td><%= text_field("userform", "email",:size=>"20" ) %></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><%= password_field("userform", "password",:size=>"20" )%></td>
+    </tr>
+    <tr><td colspan="2" align="right"><%= submit_tag 'Login' %></td></tr>
+  </table>
+</div>

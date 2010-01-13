@@ -1,0 +1,10 @@
+<%= form_tag :action=>'create' %>
+<table>
+  <tr>
+    <td>Title: </td>
+    <td><%= text_field("categoryform", "category_title",:size=>"45" ) %></td>
+  </tr>
+
+  <tr><td colspan="2" align="right"><%= submit_tag 'New Category' %></td></tr>
+</table>
+<%= flash[:notice] %>

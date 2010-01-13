@@ -1,0 +1,32 @@
+<h1>Edit reminder</h1>
+<% if flash[:notice] %>
+<div id="notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<%= form_tag :action=>'edit' %>
+<table>
+  <tr>
+    <td>Reminder Title:</td>
+    <td><%= text_field("reminderform", "reminderTitle",:size=>"20",:value=> @currentReminder.reminderTitle )%></td>
+  </tr>
+  <tr>
+    <td>Recipient (Contacts):</td>
+    <td><%= select('crecipient','crecipient',@currentUser.contacts.all.collect {|c| [c.firstName + c.lastName, c.id]},{:include_blank => 'None'},:multiple=>true) %></td>
+  </tr>
+  <tr>
+    <td>Recipient (Groups):</td>
+    <td><%= select('grecipient','grecipient',@currentUser.groups.all.collect {|g| [g.title, g.id]},{:include_blank => 'None'},:multiple => true) %></td>
+  </tr>
+  <tr>
+    <td>Reminder Date:</td>
+    <td><%= text_field("reminderform", "reminderDate",:size=>"20",:value =>@currentReminder.reminderDate )%></td>
+  </tr>
+  <tr>
+    <td>Reminder Message:</td>
+    <td><%= text_field("reminderform", "reminderMessage",:size=>"20",:value=>@currentReminder.reminderMessage)%></td>
+  </tr>
+  <tr><td colspan="2" align="right"><%= submit_tag 'Save' %></td></tr>
+</table>
+

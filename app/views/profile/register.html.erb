@@ -1,0 +1,43 @@
+<h1>Registration</h1>
+<p id="response">
+</p>
+
+
+<%= form_remote_tag :update => 'response',:url => {:action=>'doregister'},:before => "$('response').update('Loading...')" %>
+<table>
+  <tr>
+    <td>Email:</td>
+    <td><%= text_field("userform", "email",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Password:</td>
+    <td><%= password_field("userform", "password",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>First Name:</td>
+    <td><%= text_field("userform", "firstName",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><%= text_field("userform", "lastName",:size=>"20" )%></td>
+  </tr>
+
+  <tr>
+    <td>Mobile Phone:</td>
+    <td><%= text_field("userform", "mobilePhone",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Gender:</td>
+    <td><%= select("userform", "gender", {"Male" => "0", "Female" => "1"}, :selected => params[:gender])%></td>
+  </tr>
+  <tr>
+    <td>Date Of Birth:</td>
+    <td><%= text_field("userform", "dateOfBirth",:size=>"20" )%></td>
+  </tr>
+  <tr>
+    <td>Membership:</td>
+    <td><%= text_field("userform", "membership",:size=>"20" )%></td>
+  </tr>
+
+  <tr><td colspan="2" align="right"><%= submit_tag 'Register' %></td></tr>
+</table>

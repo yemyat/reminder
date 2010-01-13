@@ -1,0 +1,95 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="zh-sg">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>Contact Management -</title>
+</head>
+
+<body>
+
+<div style="position: absolute; width: 700px; height: 370px; z-index: 1; left: 20px; top: 20px" id="layer1">
+	<b><font face="Verdana" size="2">Contact Management -&gt; View Group List</font></b><form method="POST" action="--WEBBOT-SELF--">
+		<!--webbot bot="SaveResults" U-File="C:\Documents and Settings\charles_choong\My Documents\Reminder\_private\form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
+		<table border="1" width="100%">
+			<tr>
+				<td><font face="Verdana" size="2">No</font></td>
+				<td width="74"><font face="Verdana" size="2">Group Title</font></td>
+				<td width="169"><font face="Verdana" size="2">Remarks</font></td>
+				<td width="169"><font face="Verdana" size="2">Reminder Tagged</font></td>
+				<td><font face="Verdana" size="2">Options</font></td>
+				<td>　</td>
+			</tr>
+			<tr>
+				<td><font face="Verdana" size="2">1</font></td>
+				<td width="74"><font face="Verdana" size="2">Best Buddies</font></td>
+				<td width="169"><font face="Verdana" size="2">High School Best 
+				Friends</font></td>
+				<td width="169"><font face="Verdana">
+				<input type="button" value="View Reminder List" name="B4"></font></td>
+				<td><font face="Verdana">
+				<input type="button" value="Edit" name="B1"><font size="2">
+				</font><input type="button" value="Delete" name="B2"><font size="2">
+				</font><input type="button" value="View Contacts" name="B3"></font></td>
+				<td>　</td>
+			</tr>
+		</table>
+	</form>
+	<p><font face="Verdana" size="2">*If user clicks &quot;Delete&quot; user will be 
+	prompted if the group is associated with active reminder message. Disallow 
+	delete if the group is still tagged to an active message. Remind user to 
+	remove the tag before user attempt the delete action again.</font></p>
+	<p>　</p>
+	<p>　</div>
+
+<div style="position: absolute; width: 570px; height: 270px; z-index: 2; left: 75px; top: 330px; background-color: #C0C0C0" id="layer2">
+	<font face="Verdana" size="2"><b>View Reminder List (pop up window)</b></font><p>
+	<font face="Verdana" size="2">Reminder(s) tagged to <i>Best Buddies Group</i></font></p>
+	<form method="POST" action="--WEBBOT-SELF--">
+		<!--webbot bot="SaveResults" U-File="fpweb:///_private/form_results.csv" S-Format="TEXT/CSV" S-Label-Fields="TRUE" -->
+		<p>&nbsp;</p>
+		<table border="1" width="100%">
+			<tr>
+				<td width="10%"><font face="Verdana" size="2">No</font></td>
+				<td width="7%">　</td>
+				<td width="59%"><font face="Verdana" size="2">Reminder Title</font></td>
+				<td width="19%">　</td>
+			</tr>
+			<tr>
+				<td width="10%"><font face="Verdana" size="2">1</font></td>
+				<td colspan="3"><font face="Verdana">
+				<input type="checkbox" name="C5" value="ON"><font size="2">High 
+				School Gathering
+				<input type="button" value="View Reminder Detail" name="B5"></font></font></td>
+			</tr>
+			<tr>
+				<td width="10%"><font face="Verdana" size="2">2</font></td>
+				<td colspan="3"><font face="Verdana">
+				<input type="checkbox" name="C6" value="ON"><font size="2">Family 
+				Outing
+				<input type="button" value="View Reminder Detail" name="B9"></font></font></td>
+			</tr>
+			<tr>
+				<td width="10%"><font face="Verdana" size="2">3</font></td>
+				<td colspan="3"><font face="Verdana">
+				<input type="checkbox" name="C7" value="ON"><font size="2">Graduation 
+				Dinner
+				<input type="button" value="View Reminder Detail" name="B10"></font></font></td>
+			</tr>
+			<tr>
+				<td width="10%"><font face="Verdana" size="2">4</font></td>
+				<td colspan="3"><font face="Verdana">
+				<input type="checkbox" name="C8" value="ON"><font size="2">Mortgage 
+				Refinancing
+				<input type="button" value="View Reminder Detail" name="B11"></font></font></td>
+			</tr>
+		</table>
+		<p><font face="Verdana">
+		<input type="button" value="Untag selected reminder" name="B7">
+		<input type="button" value="Cancel Untag" name="B12"></font></p>
+	</form>
+	<p>　</div>
+
+</body>
+
+</html>

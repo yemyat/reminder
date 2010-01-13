@@ -1,0 +1,47 @@
+<h1>Edit contact</h1>
+<% if flash[:notice] %>
+<div id="notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+<%= @currentContact.id %>
+<%= form_tag :action=>'edit' %>
+<table>
+  <tr>
+    <td>Group:</td><%= hidden_field("contactform","tagStatus")%>
+    <td><%= select("contactform", "group_id", @currentUser.groups.all.collect { |g| [g.title,g.id]},{:include_blank => 'None'})%></td>
+
+  </tr>
+  <tr>
+    <td>First Name:</td>
+    <td><%= text_field("contactform", "firstName",:size=>"20",:value => @currentContact.firstName )%></td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><%= text_field("contactform", "lastName",:size=>"20",:value => @currentContact.lastName )%></td>
+  </tr>
+
+  <tr>
+    <td>Gender:</td>
+    <td><%= select("contactform", "gender", {"Male" => "0", "Female" => "1"}, :selected => params[:gender],:value => @currentContact.gender)%></td>
+  </tr>
+  <tr>
+    <td>Date Of Birth:</td>
+    <td><%= text_field("contactform", "dateOfBirth",:size=>"20",:value => @currentContact.dateOfBirth )%></td>
+  </tr>
+  <tr>
+    <td>Mobile Phone:</td>
+    <td><%= text_field("contactform", "mobilePhone",:size=>"20",:value => @currentContact.mobilePhone )%></td>
+  </tr>
+  <tr>
+    <td>Email:</td>
+    <td><%= text_field("contactform", "email",:size=>"20",:value => @currentContact.email )%></td>
+  </tr>
+  <tr>
+    <td>Note:</td>
+    <td><%= text_area("contactform", "note",:size=>"30x5",:value => @currentContact.note )%></td>
+  </tr>
+
+  <tr><td colspan="2" align="right"><%= submit_tag 'Save' %></td></tr>
+</table>
+
