@@ -4,7 +4,7 @@ class CreateGroups < ActiveRecord::Migration
       t.integer :profile_id
       t.string :title, :limit => 45
       t.string :description, :limit => 45
-      t.boolean :tagStatus, :default => 0
+      t.boolean :tagStatus, :default => false
       t.timestamps
     end
   end
