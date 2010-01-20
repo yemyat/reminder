@@ -12,6 +12,10 @@
     <td><%= text_field("reminderform", "reminderTitle",:size=>"20",:value=> @currentReminder.reminderTitle )%></td>
   </tr>
   <tr>
+    <td>Category:</td>
+    <td><%= select('reminderform', 'category_id', @currentUser.categories.all.collect {|b| [b.category_title, b.id]} , {:include_blank => 'None'})%></td>
+  </tr>
+  <tr>
     <td>Recipient (Contacts):</td>
     <td><%= select('crecipient','crecipient',@currentUser.contacts.all.collect {|c| [c.firstName + c.lastName, c.id]},{:include_blank => 'None'},:multiple=>true) %></td>
   </tr>
@@ -21,7 +25,7 @@
   </tr>
   <tr>
     <td>Reminder Date:</td>
-    <td><%= text_field("reminderform", "reminderDate",:size=>"20",:value =>@currentReminder.reminderDate )%></td>
+    <td><%= text_field("reminderform", "reminderDate",:size=>"20",:value =>@currentReminder.reminderDate )%></td><%=radio_button("reminder","frequency","Monthly"%><%=radio_button("reminder","frequency","Yearly"%><%=radio_button("reminder","frequency","One Time"%>
   </tr>
   <tr>
     <td>Reminder Message:</td>

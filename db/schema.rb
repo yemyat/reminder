@@ -9,10 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091227102536) do
+ActiveRecord::Schema.define(:version => 20100119150243) do
 
   create_table "categories", :force => true do |t|
-    t.integer  "reminder_id"
     t.integer  "profile_id"
     t.string   "category_title"
     t.datetime "created_at"
@@ -43,6 +42,20 @@ ActiveRecord::Schema.define(:version => 20091227102536) do
     t.datetime "updated_at"
   end
 
+  create_table "monthlies", :force => true do |t|
+    t.integer  "reminder_id"
+    t.date     "delivery_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "onetimes", :force => true do |t|
+    t.integer  "reminder_id"
+    t.date     "delivery_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", :force => true do |t|
     t.string   "firstName",   :limit => 45
     t.string   "lastName",    :limit => 45
@@ -58,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20091227102536) do
 
   create_table "reminders", :force => true do |t|
     t.integer  "profile_id"
+    t.integer  "category_id"
     t.string   "reminderTitle",   :limit => 45
     t.string   "reminderMessage", :limit => 200
     t.date     "reminderDate"
@@ -77,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20091227102536) do
     t.integer  "reminder_id"
     t.integer  "profile_id"
     t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "yearlies", :force => true do |t|
+    t.integer  "reminder_id"
+    t.date     "delivery_date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

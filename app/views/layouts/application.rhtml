@@ -1,13 +1,25 @@
 <html>
   <head>
     <title><%= @page_title %></title>
-        <%= stylesheet_link_tag '/javascripts/ext-3.1.0/resources/css/ext-all' %>
-        <%= javascript_include_tag 'ext-3.1.0/adapter/ext/ext-base', 'ext-3.1.0/ext-all',:defaults %>
+
+
   </head>
   <body>
-   <div id="panel"></div>
+    <table>
+      <tr>
+        <td width ="35%">
+          <div id="panel">
+            Profile : <%=link_to 'Login' ,'/profile/login'%> | <%=link_to 'Register' ,'/profile/register'%><br>
+            Contact : <%=link_to 'Create' ,'/contact/create'%> | <%=link_to 'View' ,'/contact/show'%><br>
+            Group : <%=link_to 'Create' ,'/group/create'%> | <%=link_to 'View' ,'/group/show'%><br>
+            Reminder : <%=link_to 'Create' ,'/reminder/create'%> | <%=link_to 'View' ,'/reminder/show'%><br>
+            Categories : <%=link_to 'Create' ,'/category/create'%>
+          </div>
+        </td>
+        <td><%=yield%></td>
+    </tr>
 
-   <%=yield%>
-  </body>
+  </table>
+</body>
 
 </html>

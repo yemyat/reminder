@@ -3,7 +3,6 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper ExtJS::Helpers::Component
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log

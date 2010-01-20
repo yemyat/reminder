@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-  belongs_to :reminder
+  has_many :reminders
+  belongs_to :profile
 end

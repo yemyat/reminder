@@ -1,15 +1,27 @@
 class ReminderController < ApplicationController
   before_filter :is_logged_in
-  def create
+  def create  
     @newReminder = @currentUser.reminders.new(params[:reminderform])
+
     if request.post?
-      @newReminder.save(:reminderTitle => @newReminder.reminderTitle,:reminderMessage => @newReminder.reminderMessage, :reminderDate => @newReminder.reminderDate)
+      @newReminder.save
       unless params[:crecipient][:crecipient] == [""]
         addContact(params[:crecipient]['crecipient'],@newReminder)
       end
       unless params[:grecipient][:grecipient]==[""]
         addGroup(params[:grecipient][:grecipient],@newReminder)
       end
+      if params[:reminder][:frequency] == '1'
+        @newReminder.monthlies.create(:delivery_date => params[:reminderform]['reminderDate'])
+      elsif params[:reminder][:frequency] =='2'
+         @newReminder.yearlies.create(:delivery_date => params[:reminderform]['reminderDate'])
+      elsif params[:reminder][:frequency] =='3'
+         @newReminder.onetimes.create(:delivery_date => params[:reminderform]['reminderDate'])
+      else
+        redirect_to :action=>'create'
+      end
+
+
       flash[:notice] = 'New reminder has been created'
       redirect_to :action => 'show'
     else
@@ -19,13 +31,13 @@ class ReminderController < ApplicationController
   
   def show
     @currentReminder = @currentUser.reminders.find(:all)
+
   end
 
   def edit
     @currentReminder = @currentUser.reminders.find_by_id(params[:id])
     if request.post?
       @currentReminder.update_attributes(params[:reminderform])
-       
       unless params[:crecipient]['crecipient'] == [""]
         editContact(params[:crecipient]['crecipient'],@currentReminder)
       end
@@ -41,17 +53,24 @@ class ReminderController < ApplicationController
   end
 
   def showTaggedContacts
-
-    @reminderContact = Tagcontact.find(:all, :conditions=>{:profile_id => @currentUser.id,:reminder_id => params[:id]})
-    @reminderContact.each do |a|
-      @myContacts = @currentUser.contacts.find_by_id(a.contact_id)
+    @taggedContacts = []
+    reminderContact = Tagcontact.find(:all, :conditions=>{:profile_id => @currentUser.id,:reminder_id => params[:id]})
+    reminderContact.each do |a|
+      myContact = @currentUser.contacts.find_by_id(a.contact_id)
+      @taggedContacts.push(myContact.firstName + ' ' + myContact.lastName)
     end
-   
+    @reminderGroup = Taggroup.find(:all, :conditions=>{:profile_id => @currentUser.id, :reminder_id => params[:id]})
+    @reminderGroup.each do |b|
+      @contactsInside = @currentUser.contacts.find_by_group_id(b.group_id)
+      @contactsInside.each do |c|
+        @taggedContacts.push(c.firstName + ' ' + c.lastName)
+      end
+
+    end
   end
 
 
   def addContact(selectedContacts,currentReminder)
-
     selectedContacts.each do |a|
       Tagcontact.create(:profile_id => @currentUser.id, :reminder_id => currentReminder.id,:contact_id =>a)
       taggedContact = @currentUser.contacts.find_by_id(a)

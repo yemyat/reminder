@@ -1,6 +1,5 @@
 
 <div id="panel"></div>
-
 <h1>Create new reminder</h1>
 <% if flash[:notice] %>
 <div id="notice">
@@ -16,7 +15,7 @@
   </tr>
   <tr>
     <td>Category:</td>
-    <td><%= text_field("reminderform", "reminderTitle",:size=>"20" )%></td>
+    <td><%= select('reminderform', 'category_id', @currentUser.categories.all.collect {|b| [b.category_title, b.id]} , {:include_blank => 'None'})%></td>
   </tr>
   <tr>
     <td>Recipient (Contacts):</td>
@@ -28,7 +27,9 @@
   </tr>
   <tr>
     <td>Reminder Date:</td>
-    <td><%= text_field("reminderform", "reminderDate",:size=>"20" )%></td>
+    <td><%= text_field("reminderform", "reminderDate",:size=>"20" )%>
+    <%=radio_button("reminder","frequency","1")%>Monthly<%=radio_button("reminder","frequency","2")%>Yearly<%=radio_button("reminder","frequency","3", {:checked=>true})%>One Time
+    </td>
   </tr>
   <tr>
     <td>Reminder Message:</td>

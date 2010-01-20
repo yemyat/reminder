@@ -35,9 +35,10 @@ class ProfileController < ApplicationController
     @encryptPassword = Digest::SHA1.hexdigest(@newUser.password)
     @registerUser = Profile.create(:password => @encryptPassword, :firstName => @newUser.firstName, :lastName => @newUser.lastName, :mobilePhone => @newUser.mobilePhone, :email =>@newUser.email, :gender => @newUser.gender,:dateOfBirth =>@newUser.dateOfBirth, :membership =>@newUser.membership  )
     if @registerUser.save
-      render :text=> "Registration successful"
+
+      redirect_to :action => 'login'
     else
-      render :text => 'Registration failed'
+      redirect_to :action => 'register'
     end
     
   end

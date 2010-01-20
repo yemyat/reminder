@@ -3,6 +3,7 @@
 <table border ="1" width ="80%">
   <tr>
     <td>Reminder Title</td>
+    <td>Category</td>
     <td>Reminder Message</td>
     <td>Recipient(s)</td>
     <td>Notification Date</td>
@@ -13,6 +14,11 @@
     <td>
       <%= r.reminderTitle %>
     </td>
+     <td>
+      <% thisCategory = @currentUser.categories.find(:first, :conditions=>{:id =>r.category_id}) %>
+       <% if thisCategory %>
+       <%=   thisCategory.category_title%>
+       <%end%>
     <td>
       <%= r.reminderMessage %>
     </td>
